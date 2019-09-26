@@ -29,7 +29,7 @@ class ImportDataCommand extends Command
     /**
      * @var ObjectManager
      */
-    private $em;
+    private $om;
 
     /**
      * @var KernelInterface
@@ -44,14 +44,14 @@ class ImportDataCommand extends Command
     /**
      * Constructor
      *
-     * @param ObjectManager $em
+     * @param ObjectManager $om
      * @param KernelInterface $kernel
      */
-    public function __construct(ObjectManager $em, KernelInterface $kernel)
+    public function __construct(ObjectManager $om, KernelInterface $kernel)
     {
         parent::__construct('app:import:data');
 
-        $this->em = $em;
+        $this->om = $om;
         $this->kernel = $kernel;
     }
 
@@ -71,7 +71,6 @@ class ImportDataCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $memoryLimit = ini_get('memory_limit');
         ini_set('memory_limit', '256M');
 
         $path = sprintf('%s/%s', $this->kernel->getProjectDir() . '/import', $input->getArgument('file'));
@@ -100,8 +99,8 @@ class ImportDataCommand extends Command
                     ++$counter;
 
                     if (($counter % 100) === 0) {
-                        $this->em->flush();
-                        $this->em->clear();
+                        $this->om->flush();
+                        $this->om->clear();
 
                         $counter = 0;
                     }
@@ -114,16 +113,8 @@ class ImportDataCommand extends Command
         }
 
         // Flush entities, which will not be added to batch
-        try {
-            $this->em->flush();
-            $this->em->clear();
-        } catch (\Exception $e) {
-            dump($e);exit;
-        }
-
-        ini_set('memory_limit', $memoryLimit);
-
-        $output->writeln('Done !!');
+        $this->om->flush();
+        $this->om->clear();
     }
 
     /**
@@ -156,11 +147,11 @@ class ImportDataCommand extends Command
             $year = intval($row[$i]);
 
             if ($year > 0) {
-                if (!$edition = $this->em->getRepository(Edition::class)->findOneByYear($year)) {
+                if (!$edition = $this->om->getRepository(Edition::class)->findOneByYear($year)) {
                     $edition = (new Edition())
                         ->setYear(intval($year))
                         ->setDescription(sprintf('Dit is de Top 2000 uit het jaar %d', $year));
-                    $this->em->persist($edition);
+                    $this->om->persist($edition);
                 }
 
                 // Setup cached list of all available editions
@@ -169,7 +160,7 @@ class ImportDataCommand extends Command
         }
 
         try {
-            $this->em->flush();
+            $this->om->flush();
 
             return true;
         } catch (\Exception $e) {
@@ -200,7 +191,7 @@ class ImportDataCommand extends Command
         }
 
         try {
-            $this->em->persist($song);
+            $this->om->persist($song);
 
             return $song;
         } catch (\Exception $e) {
@@ -214,19 +205,13 @@ class ImportDataCommand extends Command
      */
     private function getArtist(string $name): Artist
     {
-        if (!$artist = $this->em->getRepository(Artist::class)->findOneByName($name)) {
+        if (!$artist = $this->om->getRepository(Artist::class)->findOneByName($name)) {
             $artist = (new Artist())
                 ->setName($name);
 
             // Save artist data always, because we won't get duplicate items
-            try {
-                $this->em->persist($artist);
-                $this->em->flush($artist);
-            } catch (OptimisticLockException $e) {
-                return null;
-            } catch (ORMException $e) {
-                return null;
-            }
+            $this->om->persist($artist);
+            $this->om->flush($artist);
         }
 
         return $artist;
@@ -240,7 +225,7 @@ class ImportDataCommand extends Command
      */
     private function getSong(Artist $artist, string $title, int $releaseYear): Song
     {
-        if (!$song = $this->em->getRepository(Song::class)->findOneBy(['artist' => $artist, 'name' => $title])) {
+        if (!$song = $this->om->getRepository(Song::class)->findOneBy(['artist' => $artist, 'name' => $title])) {
             $song = (new Song())
                 ->setName($title)
                 ->setArtist($artist)
