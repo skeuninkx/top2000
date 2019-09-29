@@ -1,0 +1,9 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// Foundation
+@import "../../node_modules/foundation-sites/scss/foundation";
+
+// Font Awesome
+$fa-font-path: "/build/fonts";
+@import "../../node_modules/font-awesome/scss/font-awesome";

@@ -1,3 +1,4 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+app_index:
+  prefix: /
+  resource: App\Controller\IndexController
+  type: annotation
