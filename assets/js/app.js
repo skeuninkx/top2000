@@ -16,6 +16,7 @@ var $ = require('jquery');
 require('jquery-ui/ui/core');
 require('foundation-sites');
 require('foundation-sites/js/foundation');
+require('foundation-sites/js/foundation.accordionMenu');
 
 $(function() {
     $(document).foundation();

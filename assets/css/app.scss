@@ -2,10 +2,10 @@
 @charset "UTF-8";
 
 // Application theming
-//@import "theme";
+@import "theme";
 
 // Foundation
-//@import "settings";
+@import "settings";
 @import "../../node_modules/foundation-sites/scss/foundation";
 
 // Enable features. Order matters!
@@ -52,3 +52,6 @@
 // Font Awesome
 $fa-font-path: "/build/fonts";
 @import "../../node_modules/font-awesome/scss/font-awesome";
+
+// Layout
+@import "layout";

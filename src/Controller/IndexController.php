@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class IndexController
  */
-class IndexController
+class IndexController extends AbstractController
 {
     /**
      * @Route("/")
-     * @Template
+     * @return Response
      */
     public function indexAction()
     {
-        return [];
+        return $this->render('index/index.html.twig');
     }
 }
