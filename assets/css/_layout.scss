@@ -1,0 +1,71 @@
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+}
+
+input[type=submit], a.cancel {
+  @include button;
+}
+
+textarea {
+  height: 7em;
+}
+
+.select2-container {
+  margin: 0 0 $form-spacing;
+}
+
+.select2-container--default .select2-selection--multiple {
+  border: $input-border;
+  border-radius: $select-radius;
+  background-color: $select-background;
+  box-shadow: $input-shadow;
+  transition: $input-transition;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border: $input-border-focus;
+  background-color: $input-background-focus;
+  box-shadow: $input-shadow-focus;
+  transition: $input-transition;
+}
+
+.top-bar {
+  color: $white;
+  padding: 0 18px;
+
+  a {
+    color: $white;
+
+    &:hover {
+      background-color: $myPink;
+    }
+
+    &:active {
+      background-color: $myPink;
+    }
+
+    li {
+      a {
+        &.logo {
+          padding: 0;
+
+          &:hover {
+            background-color: transparent;
+          }
+
+          &:active {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.title-bar {
+  background-color: $alizarinCrimson;
+}
