@@ -4,6 +4,7 @@ menu:
   information: Informatie
   about: Over
   contact: Contact
+  logout: Uitloggen
 
 view:
   title: Top 2000 - Databank

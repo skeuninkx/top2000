@@ -4,6 +4,7 @@ menu:
   information: Information
   about: About
   contact: Contact
+  logout: Logout
 
 view:
   title: Top 2000 - Database

@@ -6,6 +6,7 @@ namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -26,15 +27,22 @@ class MenuBuilder
     private $translator;
 
     /**
+     * @var Security
+     */
+    private $security;
+
+    /**
      * Constructor
      *
      * @param FactoryInterface $factory
      * @param TranslatorInterface $translator
+     * @param Security $security
      */
-    public function __construct(FactoryInterface $factory, TranslatorInterface $translator)
+    public function __construct(FactoryInterface $factory, TranslatorInterface $translator, Security $security)
     {
         $this->factory = $factory;
         $this->translator = $translator;
+        $this->security = $security;
     }
 
     /**
@@ -53,6 +61,10 @@ class MenuBuilder
 
         $menu->addChild($this->translator->trans('menu.artist'), ['route' => 'app_artist_index']);
         $menu->addChild($this->translator->trans('menu.song'), ['route' => 'app_song_index']);
+
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            $menu->addChild($this->translator->trans('menu.logout'), ['route' => 'app_logout']);
+        }
 
         return $menu;
     }
