@@ -1,0 +1,9 @@
+menu:
+  artist: Artiesten
+  song: Platen
+  information: Informatie
+  about: Over
+  contact: Contact
+
+view:
+  title: Top 2000 - Databank

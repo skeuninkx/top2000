@@ -6,18 +6,18 @@
 
 // Foundation
 @import "settings";
-@import "../../node_modules/foundation-sites/scss/foundation";
+@import "~foundation-sites/scss/foundation";
 
 // Enable features. Order matters!
 @include foundation-global-styles;
 @include foundation-xy-grid-classes;
 @include foundation-typography;
 @include foundation-forms;
-@include foundation-range-input;
+//@include foundation-range-input;
 @include foundation-button;
-@include foundation-accordion;
-@include foundation-accordion-menu;
-@include foundation-badge;
+//@include foundation-accordion;
+//@include foundation-accordion-menu;
+//@include foundation-badge;
 @include foundation-breadcrumbs;
 @include foundation-button-group;
 @include foundation-callout;
@@ -51,7 +51,7 @@
 
 // Font Awesome
 $fa-font-path: "/build/fonts";
-@import "../../node_modules/font-awesome/scss/font-awesome";
+@import "~font-awesome/scss/font-awesome";
 
 // Layout
 @import "layout";

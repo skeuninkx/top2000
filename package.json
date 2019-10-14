@@ -3,17 +3,20 @@
     "private": true,
     "dependencies": {
         "font-awesome": "^4.7.0",
+        "foundation-emails": "^2.2.1",
         "foundation-sites": "^6.5.3",
-        "jquery": "^2.2.4",
+        "jquery": "^3.4.1",
         "jquery-ui": "^1.12.1",
         "npm-modernizr": "^2.8.3",
-        "what-input": "^5.2.4"
+        "symfony-collection": "^2.1",
+        "what-input": "^5.2.6"
     },
     "devDependencies": {
         "@symfony/webpack-encore": "^0.28.0",
+        "autoprefixer": "^9.6.4",
         "node-sass": "^4.12.0",
-        "sass-loader": "^7.3.1",
-        "webpack-notifier": "^1.8.0"
+        "postcss-loader": "^3.0.0",
+        "sass-loader": "^7.3.1"
     },
     "scripts": {
         "dev-server": "encore dev-server",

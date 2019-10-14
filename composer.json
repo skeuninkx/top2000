@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "cocur/slugify": "^3.2",
+        "knplabs/knp-menu-bundle": "^2.0",
         "phpoffice/phpspreadsheet": "^1.9",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "4.3.*",

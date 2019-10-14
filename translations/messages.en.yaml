@@ -1,0 +1,9 @@
+menu:
+  artist: Artists
+  song: Songs
+  information: Information
+  about: About
+  contact: Contact
+
+view:
+  title: Top 2000 - Database

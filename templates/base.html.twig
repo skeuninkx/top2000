@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -24,21 +24,7 @@
                 </section>
 
                 <section class="top-bar-right">
-                    <ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
-                        <li>
-                            <a href="#">Artiesten</a>
-                        </li>
-                        <li>
-                            <a href="#">Platen</a>
-                        </li>
-                        <li>
-                            <a href="#">Informatie</a>
-                            <ul class="vertical menu">
-                                <li><a href="#">Over</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    {{ knp_menu_render('main') }}
                 </section>
             </nav>
         </header>
@@ -48,7 +34,32 @@
         </main>
 
         <footer>
+            <div class="grid-x callout secondary">
+                <div class="cell small-12 medium-12 large-4">
+                    <h5>POPULAIRE ARTIESTEN</h5>
+                    <p>Onderstaande artiesten komen tot nu toe het meest voor in de Top 2000. Klik op de naam van een artiest om de noteringen te bekijken</p>
+                </div>
+                <div class="cell small-12 medium-12 large-4">
+                    <h5>ALLE JAREN OP EEN RIJ</h5>
+                    <p>De Top 2000 wordt sinds 1999 samengesteld door de stemmen van de luisteraar. Bekijk hieronder de lijst per jaar.</p>
+                </div>
+                <div class="cell small-12 medium-12 large-4">
+                    <h5>OVER DE MAKER</h5>
+                    <p>Sjors Keuninkx is al jaren groot fan van de Top 2000. Hij heeft een achtergrond in de IT en wilde kijken wat hij allemaal kon maken met de data, die de Top 2000 in de afgelopen jaren heeft opgeleverd. Het resultaat bekijk je nu.</p>
+                    <p>Alle getoonde informatie is afkomstig van <a href="https://nl.wikipedia.org/wiki/Lijst_van_Radio_2-Top_2000%27s" target="_blank">deze Wikipedia-pagina</a>.</p>
+                </div>
+            </div>
 
+            <div class="grid-x">
+                <div class="cell medium-6 large-6">
+                    {{ knp_menu_render('footer') }}
+                </div>
+                <div class="cell medium-6 large-6">
+                    <ul class="menu align-right">
+                        <li class="menu-text">&copy; 2019 - Sjors Keuninkx</li>
+                    </ul>
+                </div>
+            </div>
         </footer>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}

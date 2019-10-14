@@ -2,3 +2,18 @@ app_index:
   prefix: /
   resource: App\Controller\IndexController
   type: annotation
+
+app_page:
+  prefix: /page
+  resource: App\Controller\PageController
+  type: annotation
+
+app_artist:
+  prefix: /artist
+  resource: App\Controller\ArtistController
+  type: annotation
+
+app_song:
+  prefix: /song
+  resource: App\Controller\SongController
+  type: annotation

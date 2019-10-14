@@ -20,12 +20,12 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addStyleEntry('email', './assets/css/email.scss')
 
     // Config options
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
     .enableSassLoader()
@@ -41,16 +41,8 @@ Encore
         {from: './node_modules/font-awesome/fonts', to: 'fonts/[name].[ext]'}
     ])
 
-    // uncomment to get integrity="..." attributes on your script & link tags
-    // requires WebpackEncoreBundle 1.4 or higher
-    .enableIntegrityHashes(Encore.isProduction())
-
     // uncomment if you're having problems with a jQuery plugin
-    .autoProvidejQuery()
-
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+    // .autoProvidejQuery()
 ;
 
 module.exports = Encore.getWebpackConfig();
