@@ -6,7 +6,7 @@
         "foundation-emails": "^2.2.1",
         "foundation-sites": "^6.5.3",
         "jquery": "^3.5.0",
-        "jquery-ui": "^1.12.1",
+        "jquery-ui": "^1.13.2",
         "npm-modernizr": "^2.8.3",
         "symfony-collection": "^2.1",
         "what-input": "^5.2.6"
